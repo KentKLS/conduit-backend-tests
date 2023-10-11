@@ -65,11 +65,12 @@ class DatabaseSeeder extends Seeder
            'name'=> 'éducation'
         ]);
         $rose_article_1->tags()->attach($tag_education);
-        $rose_article_1_comment_1 = Comment::create([
+        Comment::create([
             'user_id' => $musonda->id,
             'article_id' => $rose_article_1->id,
             'body' => "J'adore ta manière de concevoir l'éducation des enfants ^^"
         ]);
+
 
     }
 }

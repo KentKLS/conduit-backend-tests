@@ -37,14 +37,21 @@ class DatabaseSeeder extends Seeder
         ]);
         $rose->following()->attach($musonda);
         $rose->followers()->attach($musonda);
-        $rose_article_1 = Article::create([
+        $rose_article_0 = Article::create([
             'user_id'=> $rose->id,
+            'title' => 'i forgor 💀',
+            'slug' => '???',
+            'description' => 'une description',
+            'body' => 'un corps de texte',
+        ]);
+        $rose_article_0->users()->attach($musonda);
+        $musonda_article_0 = Article::create([
+            'user_id'=> $musonda->id,
             'title' => 'i forgor',
             'slug' => '???',
             'description' => 'une description',
             'body' => 'un corps de texte',
         ]);
-        $rose_article_1->users()->attach($musonda);
         $musonda_article_1 = Article::create([
             'user_id'=> $musonda->id,
             'title' => 'i forgor',
@@ -52,22 +59,15 @@ class DatabaseSeeder extends Seeder
             'description' => 'une description',
             'body' => 'un corps de texte',
         ]);
-        $musonda_article_2 = Article::create([
-            'user_id'=> $musonda->id,
-            'title' => 'i forgor',
-            'slug' => '???',
-            'description' => 'une description',
-            'body' => 'un corps de texte',
-        ]);
+        $musonda_article_0->users()->attach($rose);
         $musonda_article_1->users()->attach($rose);
-        $musonda_article_2->users()->attach($rose);
         $tag_education = Tag::create([
            'name'=> 'éducation'
         ]);
-        $rose_article_1->tags()->attach($tag_education);
+        $rose_article_0->tags()->attach($tag_education);
         Comment::create([
             'user_id' => $musonda->id,
-            'article_id' => $rose_article_1->id,
+            'article_id' => $rose_article_0->id,
             'body' => "J'adore ta manière de concevoir l'éducation des enfants ^^"
         ]);
 

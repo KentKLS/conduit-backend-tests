@@ -18,7 +18,7 @@ class User extends Authenticatable implements JWTSubject
 
     public function getRouteKeyName(): string
     {
-        return 'usernames';
+        return 'username';
     }
 
     public function articles(): HasMany
@@ -43,7 +43,8 @@ class User extends Authenticatable implements JWTSubject
 
     public function doesUserFollowAnotherUser(int $followerId, int $followingId): bool
     {
-        //to Implement
+        return $this->where('id', $followerId)->whereRelation('following', 'id', $followingId)->exists();
+
     }
 
     public function doesUserFollowArticle(int $userId, int $articleId): bool

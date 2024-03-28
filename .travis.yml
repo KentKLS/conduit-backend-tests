@@ -1,0 +1,31 @@
+language: php
+php:
+  - '7.3'
+  - '8.0'
+
+before_install:
+  - composer self-update
+
+install:
+  - composer install
+
+script:
+  - php artisan key:generate
+  - php artisan config:cache
+  - php artisan migrate --seed
+  - vendor/bin/phpunit
+
+services:
+  - mysql
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+env:
+  global:
+    - DB_CONNECTION=mysql
+    - DB_DATABASE=laravel
+    - DB_USERNAME=root
+    - DB_PASSWORD=
+
